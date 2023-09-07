@@ -24,11 +24,12 @@ public class PlayerMovement : MonoBehaviour
     {
         float x =Input.GetAxis("Horizontal");
         a.velocity=new Vector2(x * 5f,a.velocity.y);
-        if(Input.GetKeyDown("space") && IsGrounded()){
-            a.velocity=new Vector2(a.velocity.x,10);
-        }
         if(x!=0f) anime.SetBool("iswalking",true);
         else anime.SetBool("iswalking",false);
+        if(Input.GetKeyDown("space") && IsGrounded()){
+            a.velocity=new Vector2(0,4);
+        }
+        
         if(x>0f) sp.flipX=true;
         else if(x<0f) sp.flipX=false;
      }
