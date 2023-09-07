@@ -4,37 +4,76 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Rigidbody2D rb;
-    public Transform player;
-    // bool isJumping;
-    float move;
+    private Rigidbody2D a;
+    // private Animator anime;
+    private BoxCollider2D coll;
+    private SpriteRenderer sp;
+    private float x =0f;
+    public bool isJumping=false;//jumping true means jumping false means not jumping
+    // private enum MovementState{idle,running,jumping,falling};
+    public LayerMask jumpableGround;
     // Start is called before the first frame update
     void Start()
     {
-        rb=GetComponent<Rigidbody2D>();
+        a=GetComponent<Rigidbody2D>();
+        // anime=GetComponent<Animator>();
+        sp=GetComponent<SpriteRenderer>();
+        coll = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
-
     void Update()
     {
-        move=Input.GetAxis("Horizontal")*5;
-        // player.position+=new Vector3 (move,0,0);
-        rb.velocity = new Vector3(move,0,0);
-        if(Input.GetButtonDown("Jump") && isInAir())
-        {
-            // isJumping=true;
-
-            rb.velocity = new Vector3(move, 1, 0) * 5;
+        float x =Input.GetAxis("Horizontal");
+        a.velocity=new Vector2(x * 7f,a.velocity.y);
+        if(Input.GetKeyDown("space") && IsGrounded()){
+            a.velocity=new Vector2(a.velocity.x,4);
+            isJumping=true;
         }
-    }
-    bool isInAir(){
-        RaycastHit2D  hit = Physics2D.Raycast(transform.position, Vector3.down, 10f);
-
-        int layerMask=LayerMask.GetMask("Ground");
-        if(Physics2D.Raycast(transform.position, Vector3.down, .5f,layerMask)){
-            return true;
-        }
-        else return false;
+        // AnimeUpdate();
+    //     MovementState state;
+    //     if(x > 0f){
+    //         state = MovementState.running;
+    //         sp.flipX=false;
+    //     }
+    //     else if(x < 0f){
+    //         state = MovementState.running;
+    //         sp.flipX=true;
+    //     }
+    //     else{
+    //         state = MovementState.idle;
+    //     }
+    //     if(a.velocity.y> .1f){
+    //         state=MovementState.jumping;
+    //     }
+    //     else if(a.velocity.y<-.1f){
+    //         state=MovementState.falling;
+    //     }
+    //     anime.SetInteger("state",(int)state);
+    // }
+    // private void AnimeUpdate(){
+    //     MovementState state;
+    //     if(x > 0f){
+    //         state = MovementState.running;
+    //         sp.flipX=false;
+    //     }
+    //     else if(x < 0f){
+    //         state = MovementState.running;
+    //         sp.flipX=true;
+    //     }
+    //     else{
+    //         state = MovementState.idle;
+    //     }
+    //     if(a.velocity.y> .1f){
+    //         state=MovementState.jumping;
+    //     }
+    //     else if(a.velocity.y<-.1f){
+    //         state=MovementState.falling;
+    //     }
+    //     anime.SetInteger("state",(int)state);
+     }
+    private bool IsGrounded(){
+        return Physics2D.BoxCast(coll.bounds.center,coll.bounds.size,0f, Vector2.down,.1f,jumpableGround);
     }
 }
+

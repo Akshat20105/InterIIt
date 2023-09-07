@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+// import textmeshpro
+using TMPro;
 
 public class Enter_mirror : MonoBehaviour
 {
     public GameObject[] real;
     public GameObject[] mirror;
-    public Text text;
+    public GameObject t;
+    public TextMeshProUGUI text;
 
 
     private bool areObjectsActive = true;
@@ -42,6 +45,8 @@ public class Enter_mirror : MonoBehaviour
         {
             ToggleObjects();
         }
+        if(playerInside) t.SetActive(true);
+        else t.SetActive(false); 
     }
 
     public void ToggleObjects()
