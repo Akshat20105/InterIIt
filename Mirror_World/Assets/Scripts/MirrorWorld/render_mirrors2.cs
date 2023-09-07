@@ -6,7 +6,6 @@ public class render_mirrors2 : MonoBehaviour
     public GameObject objectToToggle;
     public GameObject text;
 
-    // private bool playerInside = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {
