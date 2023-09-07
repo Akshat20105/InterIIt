@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.UI;
-// import textmeshpro
 using TMPro;
 using UnityEngine.SceneManagement;
  

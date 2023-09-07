@@ -8,7 +8,7 @@ public class SceneReset : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player enters the Trap zone.");
-            Invoke("SceneReset1", 1.5f);
+            Invoke("SceneReset1", 1f);
         }
     }
     private void SceneReset1()
