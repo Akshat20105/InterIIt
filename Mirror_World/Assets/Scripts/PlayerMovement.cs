@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
         float x =Input.GetAxis("Horizontal");
         a.velocity=new Vector2(x * 7f,a.velocity.y);
         if(Input.GetKeyDown("space") && IsGrounded()){
-            a.velocity=new Vector2(a.velocity.x,4);
+            a.velocity=new Vector2(a.velocity.x,10);
             isJumping=true;
         }
      }
