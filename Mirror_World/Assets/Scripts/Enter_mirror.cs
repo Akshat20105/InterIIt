@@ -22,8 +22,6 @@ public class Enter_mirror : MonoBehaviour
             // Player has entered the trigger zone
             playerInside = true;
             Debug.Log("Player enters the trigger zone.");
-
-
         }
     }
 
