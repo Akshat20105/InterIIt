@@ -10,6 +10,7 @@ public class Enter_mirror : MonoBehaviour
     public GameObject t;
     public TextMeshProUGUI text;
     private bool playerInside = false;
+    public string f;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -41,7 +42,7 @@ public class Enter_mirror : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M)&&playerInside)
         {
            
-            SceneManager.LoadScene(2);
+            SceneManager.LoadScene(f);
             // destroy.GameObject();
 
         }
