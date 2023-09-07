@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 // import textmeshpro
 using TMPro;
-
+ 
 public class Enter_mirror : MonoBehaviour
 {
     public GameObject[] real;
